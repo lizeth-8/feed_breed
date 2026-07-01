@@ -1,15 +1,5 @@
 # Product Backlog - FeedBreed
 
-## User Stories
-
- ### User Storiy 1: 
-* Se mostrara una etiqueta clara del tipo de dieta (ej: Carnívoro)
-* Va haber una sección llamada "Comportamiento" que describa si es nocturno, solitario, vive en manada, etc
-*  Se incluira un breve texto descriptivo sobre cómo consiguen su comida o qué comen exactamente. 
-### Product backlog:
- * Alta prioridad: Se va a diseñar la pantalla principal donde se muestra el nombre y la foto del animal, igualmente se creara la sección de "Alimentación" con iconos de plantas o carne
- * Media prioridad: Se va a añadir la alerta visual (rojo, amarillo y verde) para animales en peligro de extinción
- * Baja prioridad: Posiblemente se agregue preguntas sobre los animales.
 
 ## Epic 1: Autenticación y Seguridad
 
@@ -25,6 +15,13 @@
     Then el sistema crea la cuenta del usuario
     And redirige al usuario a la pantalla de inicio de sesión con un mensaje de éxito.
     ```
+* **Criterio fallido:**
+    ```gherkin
+    Given que el visitante está en la página de registro
+    When ingresa un correo invalido, una contraseña insegura y hace clic en "Registrarse"
+    Then el sistema marca error al crear la cuenta del usuario
+    And con un mensaje de texto le pide al usuario poner un correo valido y una mejor contraseña  .
+    ```
 
 ### User Story 1.2: Inicio de Sesión
 * **Historia de Usuario:**
@@ -37,6 +34,13 @@
     When ingresa sus credenciales correctas y hace clic en "Ingresar"
     Then el sistema le permite el acceso
     And lo redirige al panel principal del CRUD de animales.
+    ```
+    * **Criterio fallido:**
+       ```gherkin
+       Given que el usuario está en la página de inicio de sesión
+       When ingresa sus credenciales incorrectas y hace clic en "Ingresar"
+       Then el sistema le impide el acceso
+       And lo redirige le pide que ingrese las credenciales correctas.
     ```
 
 ---
