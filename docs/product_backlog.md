@@ -60,6 +60,14 @@
     Then el sistema valida la información
     And guarda el nuevo animal en la base de datos.
     ```
+    * **Criterios Fallida:**
+    ```gherkin
+    Given que el usuario está en el formulario de "Registrar Animal"
+    When completa los campos de nombre, raza, alimentación, hábitat, comportamiento y marca la opción de peligro de extinción
+    And hace clic en el botón "Guardar"
+    Then el sistema revisa si es imformación correcta y aceptable
+    And se encuentra información no aceptable en la base de datos.
+    ```
 
 ### User Story 2.2: Visualizar la lista de animales y sus detalles (Read)
 * **Historia de Usuario:**
@@ -73,7 +81,13 @@
     Then se muestra una tabla con el nombre y raza de todos los animales
     And incluye un botón de "Ver detalles" para revisar su comportamiento y alimentación.
     ```
-
+* **Criterios Fallidos:**
+    ```gherkin
+    Given que el usuario está en el panel principal
+    When el sistema no logra  carga la pantalla
+    Then se muestra un boton de intentar de nuevo
+    And el sistema carga la pantalla
+    ```
 ### User Story 2.3: Modificar datos de un animal (Update)
 * **Historia de Usuario:**
     * **As a** usuario autenticado
