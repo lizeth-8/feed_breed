@@ -76,3 +76,9 @@
 | **2. Pruebas de Criterios** | Se han probado manualmente todos los escenarios Gherkin (casos felices y alternativos). | ⬜ |
 | **3. Peer Review** | El código ha sido revisado y aprobado mediante un *Pull Request (PR)* en GitHub. | ⬜ |
 | **4. Validación Integral** | Los formularios bloquean campos vacíos obligatorios o entradas corruptas. | ⬜ |
+
+
+
+
+
+✅
