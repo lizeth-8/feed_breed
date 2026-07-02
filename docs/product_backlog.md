@@ -15,7 +15,7 @@
     Then el sistema crea la cuenta del usuario
     And redirige al usuario a la pantalla de inicio de sesión con un mensaje de éxito.
     ```
-* **Criterio fallido:**
+* **Criterio escenario:**
     ```gherkin
     Given que el visitante está en la página de registro
     When ingresa un correo invalido, una contraseña insegura y hace clic en "Registrarse"
@@ -35,16 +35,13 @@
     Then el sistema le permite el acceso
     And lo redirige al panel principal del CRUD de animales.
     ```
-    * **Criterio fallido:**
-       ```gherkin
-       Given que el usuario está en la página de inicio de sesión
-       When ingresa sus credenciales incorrectas y hace clic en "Ingresar"
-       Then el sistema le impide el acceso
-       And lo redirige le pide que ingrese las credenciales correctas.
+* **Criterio escenario:**
+   ```gherkin
+   Given que el usuario está en la página de inicio de sesión
+   When ingresa sus credenciales incorrectas y hace clic en "Ingresar"
+   Then el sistema le impide el acceso
+    And lo redirige le pide que ingrese las credenciales correctas.
     ```
-
----
-
 ## Epic 2: CRUD de Animales (Gestión de Información)
 
 ### User Story 2.1: Registrar un nuevo animal (Create)
@@ -60,7 +57,7 @@
     Then el sistema valida la información
     And guarda el nuevo animal en la base de datos.
     ```
-    * **Criterios Fallida:**
+* **Criterios de escenario:**
     ```gherkin
     Given que el usuario está en el formulario de "Registrar Animal"
     When completa los campos de nombre, raza, alimentación, hábitat, comportamiento y marca la opción de peligro de extinción
@@ -81,7 +78,7 @@
     Then se muestra una tabla con el nombre y raza de todos los animales
     And incluye un botón de "Ver detalles" para revisar su comportamiento y alimentación.
     ```
-* **Criterios Fallidos:**
+* **Criterios escenario:**
     ```gherkin
     Given que el usuario está en el panel principal
     When el sistema no logra  carga la pantalla
@@ -101,6 +98,15 @@
     Then el sistema guarda los cambios
     And muestra un mensaje confirmando que la información fue actualizada correctamente.
     ```
+* **Criterios de Escenario:**
+    ```gherkin
+    Given que el usuario está viendo los detalles de un animal
+    When hace clic en "Editar", modifica con informacionno no  aceptable  cualquiera de sus campos (nombre, raza, alimentación, hábitat, comportamiento o peligro de extinción)
+    And hace clic en "Actualizar"
+    Then el sistema detecta informacion no aceptable en los cambios
+    And muestra un mensaje de advertencia de  la informacion no aceptable y no se actualiza.
+    ```
+    
 
 ### User Story 2.4: Eliminar un animal del sistema (Delete)
 * **Historia de Usuario:**
@@ -114,4 +120,12 @@
     And confirma la acción en la ventana emergente de advertencia
     Then el sistema borra el registro de la base de datos
     And remueve el animal de la lista visible de inmediato.
+    ```
+* **Criterios de Escenario:**
+    ```gherkin
+    Given que el usuario está en el panel de gestión de animales
+    When hace clic en el botón "Eliminar" al lado del registro de un animal
+    And confirma la acción en la ventana emergente de advertencia
+    Then el sistema falla en borrar el registro de la base de datos
+    And no se remueve el animal de la lista.
     ```
